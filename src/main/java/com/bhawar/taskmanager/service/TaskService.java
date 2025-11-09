@@ -17,13 +17,15 @@ public class TaskService {
     }
 
     public Task updateTaskStatus(Long id, String status){
-        Optional<Task> task = taskRepository.findById(id);
-        if(task.isPresent()){
-            Task t = task.get();
-            t.setStatus(status);
-            return taskRepository.save(t);
+        Task taskToUpdate = getTaskById(id);
+        if(taskToUpdate == null){
+            return null;
         }
-        return null;
+        taskToUpdate.setStatus(status);
+        return taskRepository.save(taskToUpdate);
     }
 
+    public Task getTaskById(Long id){
+        return taskRepository.findById(id).orElse(null);
+    }
 }
