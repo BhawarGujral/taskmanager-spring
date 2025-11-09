@@ -1,11 +1,20 @@
 package com.bhawar.taskmanager.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.Data;
+
+@Data
+@Entity
 public class Task {
 
-    public String getTitle(){
-        return null;
-    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String title;
+    private String status;
 
-    public void setTitle(String title) {}
-    public void setStatus(String status) {}
+
 }
