@@ -5,9 +5,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
+@NoArgsConstructor
 public class Task {
 
     @Id
@@ -16,5 +18,8 @@ public class Task {
     private String title;
     private String status;
 
-
+    public Task(String title, String status) {
+        this.title = title;
+        this.status = status;
+    }
 }
